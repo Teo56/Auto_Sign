@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AutoSign</title>
+    <link href="../static/css/styledark.css" th:href="@{/css/styledark.css}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><img width="46" height="43.63"th:src="@{/images/AutoSignLogo3.png}" alt="Logo"></li>
+        <li><a th:href="@{/homedark}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+        <li><a th:href="@{/historydark}" class="active"><i class="fa fa-history"></i> History</a></li>
+        <li><a th:href="@{/contactusdark}" ><i class="fa fa-envelope"></i> Contacts</a></li>
+        <li><a th:href="@{/aboutusdark}"><i class="fa fa-info"></i> About us</a></li>
+        <li><a th:href="@{/donatedark}"><i class="fas fa-piggy-bank"></i> Donate</a></li>
+        <li><a th:href="@{/history}"><i class="fa fa-history"></i> Light Mode</a></li>
+    </ul>
+</nav>
+
+<!-- test printing database entries-->
+<!-- <p  th:text="'URL: ' + ${home.printDatabaseURL()}" /> -->
+
+
+
+<div th:utext="${home.printDBURL()}" ></div>
+
+<form>
+
+</form>
+
+</body>
+</html>
