@@ -1,4 +1,4 @@
-package AutoSign;
+package AutoSign.functions;
 
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
