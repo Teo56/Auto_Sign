@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - oraclejdk8
+deploy:
+  provider: heroku
+  api-key:
+    secure: 88ef9ec5-4175-48ff-89e0-903e858cf86a
+  app: sign-tube
