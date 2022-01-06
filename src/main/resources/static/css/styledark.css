@@ -1,0 +1,354 @@
+@font-face {
+    font-family: myNavFont;
+    src: url(../Fonts/sansation.bold.ttf);
+    font-weight: bold;
+}
+@font-face {
+    font-family: myNavFont;
+    src: url(../Fonts/sansation.regular.ttf);
+}
+*{
+    font-family: MyNavFont;
+    background-color: #111111;
+}
+body {
+    background-color: #111111;
+}
+h1 {
+    text-align:center;
+}
+
+h2 {
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111111;
+    display: inline-block;
+    list-style-type: none;
+}
+li {
+    float: left;
+    /*margin-right: 5px;
+    margin-left: 5px;*/
+}
+
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    /*padding: 14px 16px;*/
+    padding: 14px 79px;
+    text-decoration: none;
+    font-size: large;
+}
+
+li a:hover {
+    display: block;
+    background-color: mediumpurple;
+}
+
+li.ex1 {
+
+    padding-right: 5%;
+}
+div.ex2 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    /*border: 1px solid red;*/
+    color: white;
+}
+li.ex3 {
+    width: 30%;
+    padding-right: 3%;
+
+}
+li.ex4 {
+
+    padding-right: 5%;
+    width: 30%;
+}
+li.ex5 {
+    width: 30%;
+    padding-right: 3%;
+    font-size: x-large;
+    text-decoration: underline;
+    font-weight: bold;
+
+}
+li.ex6 {
+    padding-right: 5%;
+    width: 30%;
+    font-size: x-large;
+    text-decoration: underline;
+    font-weight: bold;
+
+}
+li.ex7 {
+    padding-right: 5%;
+    font-size: x-large;
+    text-decoration: underline;
+    font-weight: bold;
+
+}
+div.ex8 {
+    padding-bottom: 10px;
+    padding-top: 20px;
+    /*border: 1px solid red;*/
+    color: white;
+}
+
+
+.fa {
+    background: transparent;
+}
+
+.active{
+    background-color: #adad85;
+}
+
+.HomeMsg {
+    float: left;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+#home-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+
+.AboutUsMsg {
+    margin-right: -80px;
+    margin-left: 80px;
+    float: left;
+    width: 50%;
+    font-size: large;
+    color: white;
+    line-height: 2rem;
+    word-spacing: 1px;
+}
+
+.linksearch {
+    text-align: center;
+}
+
+.ContactUsMsg{
+    color: white;
+    text-align: center;
+}
+
+/*input {
+    background-color: white;
+    margin: 3px;
+    padding: 12px 20px;
+    border: 2px solid mediumpurple;
+    border-radius: 6px;
+}*/
+
+input {
+    background-color: white;
+    margin: 3px;
+    padding: 12px 20px;
+    border: 2px solid mediumpurple;
+    border-radius: 6px;
+}
+
+/*textarea{
+    background-color: white;
+    margin: 3px;
+    padding: 12px 20px;
+    border: 2px solid mediumpurple;
+    border-radius: 6px;
+    resize: none;
+}*/
+
+textarea{
+    background-color: white;
+    margin: 3px;
+    padding: 12px 20px;
+    border: 2px solid mediumpurple;
+    border-radius: 6px;
+    resize: none;
+}
+
+.searchterm {
+    width: 50%;
+    border: 3px solid #b3b3ff;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    background-color: white;
+    color: white;
+    text-decoration-color: #111111;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: myNavFont;
+    font-weight: bold;
+}
+
+::selection{
+    color: #fff;
+    background: #6F36FF;
+}
+.wrapper{
+    position: absolute;
+    top: 85%;
+    left: 80%;
+    max-width: 350px;
+    width: 25%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.06);
+}
+.wrapper header{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 17px 30px;
+    border-bottom: 1px solid #D0B49F;
+    color: rgba(255,255,255, 1);
+    text-align:center;
+}
+.wrapper header.active{
+    cursor: move;
+    user-select: none;
+}
+.wrapper .content{
+    display: flex;
+    padding: 0px 0px 10px 0px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content .title{
+    margin: 10px 0;
+    font-size: 29px;
+    font-weight: 500;
+    color: rgba(255,255,255, 1);
+}
+.content p{
+    font-size: 16px;
+    text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
+
+.menuB{
+
+}
+
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.container {
+    background-color: #111111;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+    .col-25 {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* FOOOTER STYLES */
+
+
