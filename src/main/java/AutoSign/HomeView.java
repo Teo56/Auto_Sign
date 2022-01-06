@@ -29,12 +29,6 @@ public class HomeView {
     }
 
 
-    public String getEmbed(){
-        String link = getURL();
-        String[] videoID = link.split("v=");
-        embed = "https://www.youtube.com/embed/" + videoID[1] + "?enablejsapi=1&html5=1";
-        return embed;
-    }
     public void sendURL(String url) throws JSONException {
         SendUrl.sendurl(url);
     }
