@@ -2,6 +2,8 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
+
 <head>
     <meta charset="UTF-8">
     <title>AutoSign</title>
@@ -18,6 +20,7 @@
         <li><a th:href="@{/contactus}" ><i class="fa fa-envelope"></i> Contacts</a></li>
         <li><a th:href="@{/aboutus}"><i class="fa fa-info"></i> About us</a></li>
         <li><a th:href="@{/donate}"><i class="fas fa-piggy-bank"></i> Donate</a></li>
+        <li><a th:href="@{/homedark}"><i class="fa fa-loading"></i> Dark Mode</a></li>
     </ul>
 </nav>
 <div class="HomeMsg">
@@ -33,6 +36,8 @@
     <p style="color:white; text-align: center">(For example: https://www.youtube.com)</p>
     <p style="text-align: center;"><br><input type="submit" value="Submit" /> <input type="reset" value="Reset"  /></p>
 </form>
-
-</body>
-</html>
+<a href='loading'>
+    <button class="LoadingButton">
+        Press For Loading Screen
+    </button>
+</a>

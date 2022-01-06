@@ -17,6 +17,13 @@ public class HomeView {
         return url;
     }
 
+    public String getEmbed(){
+        String link = getURL();
+        String[] videoID = link.split("v=");
+        embed = "https://www.youtube.com/embed/" + videoID[1];
+        return embed;
+    }
+
     public void setURL(String url) {
         this.url = url;
     }
