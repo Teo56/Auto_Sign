@@ -60,6 +60,7 @@ div.ex2 {
     padding-bottom: 10px;
     padding-top: 10px;
     /*border: 1px solid red;*/
+    padding-left: 30px;
     color: white;
 }
 li.ex3 {
@@ -99,7 +100,9 @@ div.ex8 {
     padding-bottom: 10px;
     padding-top: 20px;
     /*border: 1px solid red;*/
+    padding-left: 30px;
     color: white;
+
 }
 
 
