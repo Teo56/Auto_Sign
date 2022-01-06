@@ -4,5 +4,5 @@ jdk:
 deploy:
   provider: heroku
   api-key:
-    secure: 88ef9ec5-4175-48ff-89e0-903e858cf86a
+    secure: $HEROKU_API_KEY
   app: sign-tube
