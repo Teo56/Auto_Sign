@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>AutoSign</title>
+    <link href="../static/css/styledark.css" th:href="@{/css/styledark.css}" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<nav style="text-align: center;">
+    <ul>
+        <li><img width="46" height="44"th:src="@{/images/AutoSignLogo3.png}" alt="Logo"></li>
+        <li><a th:href="@{/}"class="active"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+        <li><a th:href="@{/historydark}"><i class="fa fa-history"></i> History</a></li>
+        <li><a th:href="@{/contactusdark}" ><i class="fa fa-envelope"></i> Contacts</a></li>
+        <li><a th:href="@{/aboutusdark}"><i class="fa fa-info"></i> About us</a></li>
+        <li><a th:href="@{/donatedark}"><i class="fas fa-piggy-bank"></i> Donate</a></li>
+        <li><a th:href="@{/}"><i class="fa fa-home" aria-hidden="true"></i> Light Mode</a></li>
+    </ul>
+</nav>
+<div class="HomeMsg">
+    <p><br></p>
+    <h1> SignTube</h1> <img width="63.25" height="60"th:src="@{/images/AutoSignLogo3.png}" alt="Logo" class="center">
+    <h2> Get your Youtube videos SignTubed! </h2>
+</div>
+
+
+
+<form action="#" th:action="@{/homedark}" th:object="${home}" method="post">
+    <p style="color:white; text-align: center"><br></br><br></br><br></br>URL: <input type="url" th:field="*{URL}" /></p>
+    <p style="color:white; text-align: center">(For example: https://www.youtube.com)</p>
+    <p style="text-align: center;"><br><input type="submit" value="Submit" /> <input type="reset" value="Reset"  /></p>
+</form>
+
+</body>
+</html>
