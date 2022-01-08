@@ -23,6 +23,11 @@ justify-content: center;
 align-items: center;}
 
 
+.body {
+ cursor: url("../images/cursor_process.png") 2 2, auto;
+}
+
+
 
 @font-face {
     font-family: myNavFont;
@@ -35,7 +40,6 @@ align-items: center;}
 }
 *{
     font-family: MyNavFont;
-    background-color: #6A5ACD;
 }
 body {
     background-color: #6A5ACD;
@@ -359,6 +363,49 @@ span.price {
     .col-25 {
         margin-bottom: 20px;
     }
+}
+
+
+/* LOADER PAGE LOADING BAR STYLE */
+
+
+#appearButtonDiv {
+    alignment: center;
+}
+                                                       /* CSS */
+#appearButton {
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+#appearButton:hover,
+#appearButton:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+}
+
+#appearButton:active {
+    opacity: .5;
 }
 
 
