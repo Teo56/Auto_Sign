@@ -20,7 +20,7 @@
         <div class="title">BSL Subtitles</div>
         <div class="player">
             <video  width="213" height="160" controls>
-                <source src="/tmp/".${homeee.VideoFileName()} type=video/mp4>
+                <source id = "videodownlaoded" src="" type=video/mp4>
             </video>
         </div>
     </div>
@@ -66,6 +66,7 @@
     </button>
 </div>
 <script>
+    document.getElementById('videodownloaded').src = "/tmp/" +  ${homeee.VideoFileName()}
     var player;
     const media = document.querySelector('video');
     const play = document.querySelector('#play-button');
