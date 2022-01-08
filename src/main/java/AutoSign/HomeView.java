@@ -1,5 +1,6 @@
 package AutoSign;
 
+import AutoSign.functions.CheckVideoExist;
 import AutoSign.functions.DownloadObject;
 import AutoSign.functions.PrintDbUrl;
 import AutoSign.functions.SendUrl;
@@ -23,6 +24,13 @@ public class HomeView {
         embed = "https://www.youtube.com/embed/" + videoID[1];
         return embed;
     }
+    
+    public String VideoFileName() {
+        String link = getURL();
+        String[] videoID = link.split("v=");
+        String filename = videoID[1] + ".mp4";
+        return filename;
+    }
 
     public void setURL(String url) {
         this.url = url;
@@ -33,8 +41,15 @@ public class HomeView {
         SendUrl.sendurl(url);
     }
 
-    public void downloadVideo(String url) throws IOException {
-        DownloadObject.downloadObject("autosign-334513", "data_bucket_video_swag", "finals.mp4", "/static/images/file.mp4");
+    public void downloadVideo(String videoid) throws IOException {
+        videoid = videoid + ".mp4";
+        DownloadObject.downloadObject("autosign-334513", "auto-sign-main", "/tmp/" + videoid, "src/main/resources/static/images" + videoid);
+    }
+
+    public boolean checkVideoExists(String url) throws IOException {
+        boolean exists = CheckVideoExist.CheckVideoExists(url);
+
+        return exists;
     }
 
     public String printDBURL() {
