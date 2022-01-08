@@ -20,7 +20,7 @@ public class CheckVideoExist {
         String bucketName = "auto-sign-main";
 
         Credentials credentials = GoogleCredentials
-                .fromStream(new FileInputStream("src/main/resources/ServiceKey_GoogleCloud copy.json"));
+                .fromStream(new FileInputStream("google-credentials.json"));
 
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials)
                 .setProjectId("autosign-336618").build().getService();
