@@ -43,7 +43,7 @@ public class HomeView {
 
     public void downloadVideo(String videoid) throws IOException {
         videoid = videoid + ".mp4";
-        DownloadObject.downloadObject("autosign-334513", "auto-sign-main", "/tmp/" + videoid, "src/main/resources/static/images" + videoid);
+        DownloadObject.downloadObject("autosign-334513", "auto-sign-main", "/tmp/" + videoid, "/tmp/" + videoid);
     }
 
     public boolean checkVideoExists(String url) throws IOException {
