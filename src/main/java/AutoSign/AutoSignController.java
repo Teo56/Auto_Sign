@@ -1,5 +1,7 @@
 package AutoSign;
 
+import AutoSign.functions.DownloadObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -45,6 +47,38 @@ public class AutoSignController {
         model.addAttribute("home", new HomeView());
         return "homedark";
     }
+    
+    @PostMapping("/checkvideoexists")
+    @ResponseBody
+    public Boolean checkVideoRouter(@RequestParam("videoid") String videoid, @ModelAttribute HomeView home, Model model) throws IOException {
+        model.addAttribute("home", home);
+        Boolean exist;
+        String[] videoID = videoid.split("v=");
+        String videoId = videoID[1];
+
+        exist = home.checkVideoExists(videoId);
+        if (exist) {
+            home.downloadVideo(videoId);
+            return true;
+        } else if (exist == false) {
+            return false;
+        }
+        return false;
+    }
+
+
+    @RequestMapping(value = "/", method = RequestMethod.POST, params = "videourl")
+    public String startVideo(@RequestParam("url") String url, @ModelAttribute HomeView home, Model model) {
+
+        HomeView homeee = new HomeView();
+        homeee.setURL(url);
+        model.addAttribute("homeee", homeee);
+
+
+        System.out.print(homeee.getURL());
+        return "result";
+    }
+
 
     @PostMapping("/")
     public String URLsubmit(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
