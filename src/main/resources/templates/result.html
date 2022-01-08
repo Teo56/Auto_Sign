@@ -65,8 +65,9 @@
         <div  id="pause-button"></div>
     </button>
 </div>
-<script>
-    document.getElementById('videodownloaded').src = "/tmp/" +  ${homeee.VideoFileName()}
+<script th:filename="${homeee.VideoFileName()}">
+    var filename = document.currentScript.getAttribute('filename');
+    document.getElementById('videodownloaded').src = "/tmp/" +  filename;
     var player;
     const media = document.querySelector('video');
     const play = document.querySelector('#play-button');
