@@ -97,11 +97,20 @@
         player = new YT.Player('video', {
             events: {
                 // call this function when player is ready to use
-                'onReady': onPlayerReady
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
 
             }
         });
         startInterval()
+    }
+    function onPlayerStateChange(event){
+        if (event.data == YT.PlayerState.PAUSED) {
+            media.pause();
+        }
+        else{
+            media.play();
+        }
     }
     function startInterval() {
         var CheckT = document.getElementById("Check_time");
