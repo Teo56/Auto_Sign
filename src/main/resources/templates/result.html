@@ -9,6 +9,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
     <link href='https://css.gg/play-button.css' rel='stylesheet'>
     <link href='https://css.gg/play-pause.css' rel='stylesheet'>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+
+
 </head>
 <body>
 <h1 style="color: white">Your Video is Ready To Watch!</h1>
@@ -19,9 +22,9 @@
     <div class="content">
         <div class="title">BSL Subtitles</div>
         <div class="player">
-            <video  width="213" height="160" controls>
-                <source id="videodownloaded" src="" type=video/mp4>
-            </video>
+         
+            <iframe width="300" height="300" id="videodownloaded" src="" frameborder="0" allowfullscreen></iframe>
+            
         </div>
     </div>
 </div>
@@ -67,7 +70,7 @@
 </div>
 <script th:filename="${homeee.VideoFileName()}">
     var filename = document.currentScript.getAttribute('filename');
-    document.getElementById('videodownloaded').src = "/tmp/" +  filename;
+    document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
     var player;
     const media = document.querySelector('video');
     const play = document.querySelector('#play-button');
