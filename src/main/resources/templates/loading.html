@@ -2,16 +2,105 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
+
     <meta charset="UTF-8">
     <title>AutoSign</title>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.1/bodymovin.min.js"></script>
+
+
 </head>
 <body>
+<div>
+    <h1> When the video will be ready a button will appear</h1>
+</div>
 <div class="loadingparentDiv1">
+<!--    <h1 id = ""     th:text="'URL: ' + ${home.URL}"></h1>-->
     <img class="animated-gif" src="https://miro.medium.com/max/611/0*mv8MNRLDNNnt5f72.gif">
 </div>
+
+<div id="animationWindow">
+</div>
+
+
+<div id="appearButtonDiv" class = "form-container">
+    <form th:action="@{/}"  th:object="${home}" method="post">
+        <input type="hidden" name="url" th:value="${home.getURL()}" />
+        <input type="submit" id= "appearButton" name="videourl" value="Go to Video" />
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/2.2.4/jquery.min.js}"></script>
+<script type="text/javascript" th:inline="javascript"  th:url="${home.URL}" th:object="${home}">
+    var url = document.currentScript.getAttribute('url');
+    var object = document.currentScript.getAttribute('object')
+    var doesexist = false;
+    var button = document.getElementById("appearButtonDiv");
+    button.style.display = "none";
+    console.log(url);
+
+    //window.onload = checkVideoExistAjax(url, doesexist, object);
+    console.log("Runs");
+
+    // send requests
+
+    setInterval(function () {
+        checkVideoExistAjax(url, doesexist)
+    }, 2000);
+
+
+    function checkVideoExistAjax(link, doesexist) {
+        console.log("Runs");
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/checkvideoexists",
+            data: {
+                videoid: link
+            },
+            success: function (text) {
+                console.log(text);
+                if (text == true) {
+                    doesexist = true
+                    button.style.display = "block";
+                }
+            },
+            error: function(jqXHR) {
+                console.log(jqXHR)
+            }
+        });
+        return doesexist;
+    }
+
+    function post(path, parameters) {
+        var form = $('<form></form>');
+
+        form.attr("method", "post");
+        form.attr("action", path);
+
+        $.each(parameters, function(key, value) {
+            if ( typeof value == 'object' || typeof value == 'array' ){
+                $.each(value, function(subkey, subvalue) {
+                    var field = $('<input />');
+                    field.attr("type", "hidden");
+                    field.attr("name", key+'[]');
+                    field.attr("value", subvalue);
+                    form.append(field);
+                });
+            } else {
+                var field = $('<input />');
+                field.attr("type", "hidden");
+                field.attr("name", key);
+                field.attr("value", value);
+                form.append(field);
+            }
+        });
+        $(document.body).append(form);
+        form.submit();
+    }
+</script>
 
 </body>
 </html>
