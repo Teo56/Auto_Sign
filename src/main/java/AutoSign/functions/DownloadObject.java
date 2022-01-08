@@ -22,7 +22,7 @@ public class DownloadObject {
 
         // Change the directory of the credentials to get access to the Database online
         Credentials credentials = GoogleCredentials
-                .fromStream(new FileInputStream("src/main/resources/ServiceKey_GoogleCloud copy.json"));
+                .fromStream(new FileInputStream("google-credentials.json"));
 
         // This is to set the name of the project online
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials)
