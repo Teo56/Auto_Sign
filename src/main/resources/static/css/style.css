@@ -408,5 +408,54 @@ span.price {
     opacity: .5;
 }
 
+.button {
+    padding: 10px 20px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    background-color: #7F8C8D;
+    border: none;
+    border-radius: 4px;
+}
+#play-button-outer{
+    background-color: #2ECC71;
+}
+#play-button {
+    margin: 0 auto;
+    top: 25%;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 1em 0 1em 2em;
+    border-color: transparent transparent transparent #ffffff;
+    opacity: .75;
+}
+#play-button-outer:hover {
+    background-color: #27AE60;
+}
+.play-button-outer:hover .play-button {
+    opacity: 1;
+}
 
+#pause-button-outer {
+    background-color: #E67E22;
+}
+#pause-button {
+    width: 2em;
+    height: 2em;
+    border-style: double;
+    border-width: 0em 1em 0em 1em;
+    border-width: 0em 0em 0em 2em;
+    border-color: #ffffff;
+    opacity: 0.75;
+}
+#pause-button-outer:hover {
+    background-color: #D35400;
+}
+.pause-button-outer:hover .pause-button {
+    opacity: 1;
+}
 
