@@ -137,7 +137,8 @@
         // bind events
         var playButton = document.getElementById("play-button");
         playButton.addEventListener("click", function() {
-            player.playVideo();
+            var fn = function(){ player.playVideo(); }
+            setTimeout(fn, 2000);
         });
 
         var pauseButton = document.getElementById("pause-button");
