@@ -34,8 +34,8 @@
     </div>
 </div>
 
-<div>
-    <iframe class="center" width="840" height="472" id="videoYT" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
+<div id="player">
+    <iframe class="center" width="840" height="472" id="player" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
 </div>
 
 <script>
@@ -102,7 +102,7 @@
     // this function gets called when API is ready to use
     function onYouTubePlayerAPIReady() {
         // create the global player from the specific iframe (#video)
-        player = new YT.Player('#videoYT', {
+        player = new YT.Player('player', {
             events: {
                 // call this function when player is ready to use
                 'onReady': onPlayerReady,
