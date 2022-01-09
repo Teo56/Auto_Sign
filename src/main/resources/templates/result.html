@@ -79,6 +79,7 @@
     var filename = document.currentScript.getAttribute('filename');
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
     var player;
+    var videoPos;
     const media = document.querySelector('video');
     const play = document.querySelector('#play-button');
     const pause = document.querySelector('#pause-button');
@@ -109,7 +110,7 @@
 
             }
         });
-        startInterval(player)
+        startInterval()
     }
     function onPlayerStateChange(event){
         if (event.data == YT.PlayerState.PAUSED) {
@@ -119,14 +120,15 @@
             media.play();
         }
     }
-    function startInterval(player) {
+    function startInterval() {
         var CheckT = document.getElementById("Check_time");
         const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
         checkInt = setInterval(function() {
-            if (Math.abs(media.currentTime - player.getCurrentTime())>= 0.5) {
-                media.currentTime = player.getCurrentTime();
-                //CheckT.innerHTML += player.getCurrentTime();
+            videoPos = !player.getCurrentTime ? 0.0 : player.getCurrentTime();
+            if (Math.abs(media.currentTime - videoPos)>= 0.5) {
+                media.currentTime = videoPos
+                //CheckT.innerHTML += videoPos;
             };
         }, 100)
     }
