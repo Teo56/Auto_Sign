@@ -1,6 +1,8 @@
 language: java
 jdk:
   - openjdk19
+before-deploy:
+  - gem install faraday -v 1.8.0
 deploy:
   provider: heroku
   api-key:
