@@ -21,9 +21,9 @@
     <header>Dragable Window</header>
     <div class="content">
         <div class="title">BSL Subtitles</div>
-        <div class="player" width="46" height="44">
+        <div class="player" width="460" height="440">
          
-            <iframe width="46" height="44" id="videodownloaded" src="" frameborder="0" allowfullscreen></iframe>
+            <iframe id="videodownloaded" src="" frameborder="0" allowfullscreen></iframe>
             
         </div>
     </div>
@@ -100,15 +100,23 @@
 
 <script th:filename="${homeee.VideoFileName()}">
     var filename = document.currentScript.getAttribute('filename');
+
+    //this is the google cloud video which in the html is displayed in an iframe
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
+
     var player;
+
+    //this is the mp4 locally saved video
     const media = document.querySelector('video');
+
+    //these are the play and pause buttons
     const play = document.querySelector('#play-button');
     const pause = document.querySelector('#pause-button');
 
     play.addEventListener('click', playMedia);
     pause.addEventListener('click', pauseMedia);
 
+    //functions to control the mp4 video with the buttons
     function playMedia() {
         if(media.paused) {
             media.play();
@@ -121,6 +129,7 @@
         }
     }
 
+    //function for the YT video control
     function onYouTubePlayerAPIReady() {
         // create the global player from the specific iframe (#video)
         player = new YT.Player('video', {
@@ -133,6 +142,7 @@
         });
         startInterval()
     }
+    //function to coordinate the YT video and the mp4 video
     function onPlayerStateChange(event){
         if (event.data == YT.PlayerState.PAUSED) {
             media.pause();
@@ -141,6 +151,7 @@
             media.play();
         }
     }
+    //function to check the time difference between youtube and mp4 in case of lag
     function startInterval() {
         var CheckT = document.getElementById("Check_time");
         const media = document.querySelector('video');
@@ -158,6 +169,8 @@
 
         //CheckT.innerHTML += player.getCurrentTime();
         // bind events
+
+        //function to control YT video with the buttons
         var playButton = document.getElementById("play-button");
         playButton.addEventListener("click", function() {
             player.playVideo();
