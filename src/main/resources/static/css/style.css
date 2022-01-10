@@ -269,9 +269,9 @@ textarea{
     text-align: center;
 }
 
-#videodownloaded { width: 600px; height: 390px; padding: 0; overflow: hidden; }
-#frame { width: 800px; height: 520px; border: 1px solid black; }
-#frame { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
+#player { width: 600px; height: 390px; padding: 0; overflow: hidden; }
+#videodownloaded { width: 800px; height: 520px; border: 1px solid black; }
+#videodownloaded { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
 
 .center {
     margin-left: auto;
