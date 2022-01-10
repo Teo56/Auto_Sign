@@ -21,14 +21,20 @@
     <header>Dragable Window</header>
     <div class="content">
         <div class="title">BSL Subtitles</div>
-        <div id="player">
-            <iframe id="videodownloaded" src="" frameborder="0" allowfullscreen></iframe>
+        <div class="player">
+         
+            <video id="my-video"
+                   class="video-js"
+                   controls data-setup="{}">
+                <source id="videodownloaded" src="">
+            </video>
+
         </div>
     </div>
 </div>
 
 <div>
-    <iframe class="center" width="840" height="472" id="video" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
+    <iframe class="center" width="840" height="472" id="playerYT" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
 </div>
 
 <script>
@@ -67,39 +73,12 @@
     </button>
 </div>
 
-<p><br><br><br></p>
-<p style="text-align: center"><br><br><a style="color:white;" href="/">Submit another request! <br> </a></p>
-<p><br><br><br></p>
-<div id="Check_time">
-    0
-</div>
-
-
-<!-- JS -->
-<script>
-    const wrapper = document.querySelector(".wrapper"),
-        header = wrapper.querySelector("header");
-    function onDrag({movementX, movementY}){
-        let getStyle = window.getComputedStyle(wrapper);
-        let leftVal = parseInt(getStyle.left);
-        let topVal = parseInt(getStyle.top);
-        wrapper.style.left = `${leftVal + movementX}px`;
-        wrapper.style.top = `${topVal + movementY}px`;
-    }
-    header.addEventListener("mousedown", ()=>{
-        header.classList.add("active");
-        header.addEventListener("mousemove", onDrag);
-    });
-    document.addEventListener("mouseup", ()=>{
-        header.classList.remove("active");
-        header.removeEventListener("mousemove", onDrag);
-    });
-</script>
-
+<script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
 <script th:filename="${homeee.VideoFileName()}">
     var filename = document.currentScript.getAttribute('filename');
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
     var player;
+    var videoPos
     const media = document.querySelector('video');
     const play = document.querySelector('#play-button');
     const pause = document.querySelector('#pause-button');
@@ -119,9 +98,10 @@
         }
     }
 
+    // this function gets called when API is ready to use
     function onYouTubePlayerAPIReady() {
         // create the global player from the specific iframe (#video)
-        player = new YT.Player('video', {
+        player = new YT.Player('playerYT', {
             events: {
                 // call this function when player is ready to use
                 'onReady': onPlayerReady,
@@ -144,11 +124,13 @@
         const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
         checkInt = setInterval(function() {
-            if (Math.abs(media.currentTime - player.getCurrentTime())>= 0.5) {
-                media.currentTime = player.getCurrentTime();
-                //CheckT.innerHTML += player.getCurrentTime();
-            };
+            videoPos = !player.getCurrentTime() ? 0.0 : player.getCurrentTime();
+            console.log(videoPos)
+            if (Math.abs(media.currentTime - videoPos)>= 0.5) {
+                media.currentTime = videoPos;
 
+                //CheckT.innerHTML += player.getCurrentTime;
+            };
         }, 100)
     }
     function onPlayerReady(event) {
@@ -182,10 +164,17 @@
 <script>
     const box = document.querySelector('.box');
     box.addEventListener('click', (e)=>{
-            e.target.classList.toggle('pause');
+        e.target.classList.toggle('pause');
 
         }
     )
 </script>
+<p><br><br><br></p>
+<p style="text-align: center"><br><br><a style="color:white;" href="/">Submit another request! <br> </a></p>
+<p><br><br><br></p>
+<div id="Check_time">
+    0
+</div>
+
 </body>
 </html>
