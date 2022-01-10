@@ -270,7 +270,7 @@ textarea{
 }
 
 #player { width: 200px; height: 130px; padding: 0; overflow: hidden; }
-#videodownloaded { width: 800px; height: 520px; border: 1px solid black; }
+#videodownloaded { width: 400px; height: 260px; border: 1px solid black; }
 #videodownloaded { zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0; }
 
 .center {
