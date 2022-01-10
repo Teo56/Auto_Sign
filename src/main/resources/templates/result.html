@@ -68,6 +68,16 @@
         <div  id="pause-button"></div>
     </button>
 </div>
+
+<p><br><br><br></p>
+<p style="text-align: center"><br><br><a style="color:white;" href="/">Submit another request! <br> </a></p>
+<p><br><br><br></p>
+<div id="Check_time">
+    0
+</div>
+
+
+<!-- JS -->
 <script th:filename="${homeee.VideoFileName()}">
     var filename = document.currentScript.getAttribute('filename');
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
@@ -154,17 +164,10 @@
 <script>
     const box = document.querySelector('.box');
     box.addEventListener('click', (e)=>{
-        e.target.classList.toggle('pause');
+            e.target.classList.toggle('pause');
 
         }
     )
 </script>
-<p><br><br><br></p>
-<p style="text-align: center"><br><br><a style="color:white;" href="/">Submit another request! <br> </a></p>
-<p><br><br><br></p>
-<div id="Check_time">
-    0
-</div>
-
 </body>
 </html>
