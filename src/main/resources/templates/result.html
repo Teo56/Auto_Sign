@@ -25,7 +25,7 @@
 
             <video id="my-video"
                    class="video-js"
-                   controls data-setup="{}">
+                   controls data-setup="{}" width="213" height="160">
                 <source id="videodownloaded" src="">
             </video>
 
@@ -78,8 +78,8 @@
     var filename = document.currentScript.getAttribute('filename');
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
     var player;
-    var videoPos
-    const media = document.querySelector('video');
+    var videoPos;
+    const media = document.querySelector('#my-video');
     const play = document.querySelector('#play-button');
     const pause = document.querySelector('#pause-button');
 
