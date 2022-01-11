@@ -26,7 +26,7 @@
             <video id="my-video"
                    class="video-js"
                    controls data-setup="{}" width="213" height="160">
-                <source id="videodownloaded" src="">
+                <source id="videodownloaded" src="" type="video/mp4">
             </video>
 
         </div>
@@ -79,7 +79,8 @@
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
     var player;
     var videoPos;
-    const media = document.querySelector('#my-video');
+    //const media = document.querySelector('#my-video');
+    var media = videojs("my-video");
     const play = document.querySelector('#play-button');
     const pause = document.querySelector('#pause-button');
 
@@ -87,13 +88,13 @@
     pause.addEventListener('click', pauseMedia);
 
     function playMedia() {
-        if(media.paused) {
+        if(media.paused()) {
             media.play();
         }
     }
 
     function pauseMedia() {
-        if(media.paused != true) {
+        if(!media.paused()) {
             media.pause();
         }
     }
@@ -120,13 +121,13 @@
     }
     function startInterval() {
         var CheckT = document.getElementById("Check_time");
-        const media = document.querySelector('video');
+        //const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
         checkInt = setInterval(function() {
             videoPos = !player.getCurrentTime() ? 0.0 : player.getCurrentTime();
             console.log(videoPos)
-            if (Math.abs(media.currentTime - videoPos)>= 0.5) {
-                media.currentTime = videoPos;
+            if (Math.abs(media.currentTime() - videoPos)>= 0.5) {
+                media.currentTime(videoPos);
 
                 //CheckT.innerHTML += player.getCurrentTime;
             };
