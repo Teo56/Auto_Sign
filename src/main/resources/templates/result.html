@@ -160,12 +160,12 @@
         // bind events
         const playButton = document.getElementById("play-button");
         playButton.addEventListener("click", function() {
-            event.target.play();
+            player.playVideo();
         });
 
         const pauseButton = document.getElementById("pause-button");
         pauseButton.addEventListener("click", function() {
-            event.target.pause();
+            player.pauseVideo();
         });
 
         const stopButton = document.getElementById("stop-button");
