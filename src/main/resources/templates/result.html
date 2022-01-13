@@ -34,7 +34,7 @@
 </div>
 
 <div>
-    <iframe class="center" width="840" height="472" id="playerYT" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
+    <iframe class="center" width="840" height="472" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
 </div>
 
 <script>
@@ -78,7 +78,7 @@
     var filename = document.currentScript.getAttribute('filename');
     document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
     var player;
-    var videoPos;
+    //var videoPos;
     //const media = document.querySelector('#my-video');
     var media = videojs("my-video");
     const play = document.querySelector('#play-button');
@@ -101,7 +101,7 @@
 
     function onYouTubePlayerAPIReady() {
         // create the global player from the specific iframe (#video)
-        player = new YT.Player('#playerYT', {
+        player = new YT.Player('video', {
             events: {
                 // call this function when player is ready to use
                 'onReady': onPlayerReady,
@@ -124,10 +124,8 @@
         //const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
         checkInt = setInterval(function() {
-            videoPos = !player.getCurrentTime() ? 0.0 : player.getCurrentTime();
-            console.log(videoPos)
-            if (Math.abs(media.currentTime() - videoPos)>= 0.5) {
-                media.currentTime(videoPos);
+            if (Math.abs(media.currentTime() - player.getCurrentTime())>= 0.5) {
+                media.currentTime(player.getCurrentTime());
 
                 //CheckT.innerHTML += player.getCurrentTime;
             };
