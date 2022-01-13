@@ -7,9 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AutoSign</title>
-    <link th:if="${style.getStyle() == 'false'}" href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
-    <link th:if="${style.getStyle() == 'true'}" href="../static/css/style.css" th:href="@{/css/styledark.css}" rel="stylesheet" />
-
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="image/png" th:href="@{/images/favic.png}"/>
 </head>
@@ -45,9 +43,6 @@
 </a>
 
 
-<form th:action="${style.setDark(true)}">
-    <button type="submit"> Submit </button>
-</form>
 
 
 

@@ -38,7 +38,6 @@ public class AutoSignController {
     @GetMapping("/" )
     public String Home(Model model){
         model.addAttribute("home", new HomeView());
-        model.addAttribute("style", new Style(false));
         /** returning the logical name of the html to be viewed, here home.html**/
         return "home";
     }
