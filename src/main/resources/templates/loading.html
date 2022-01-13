@@ -10,21 +10,17 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.1/bodymovin.min.js"></script>
-
-
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/favic.png}"/>
 </head>
 <body>
 <div>
     <h1> When the video will be ready a button will appear</h1>
 </div>
+
 <div class="loadingparentDiv1">
 <!--    <h1 id = ""     th:text="'URL: ' + ${home.URL}"></h1>-->
     <img class="animated-gif" src="https://miro.medium.com/max/611/0*mv8MNRLDNNnt5f72.gif">
 </div>
-
-<div id="animationWindow">
-</div>
-
 
 <div id="appearButtonDiv" class = "form-container">
     <form th:action="@{/}"  th:object="${home}" method="post">
