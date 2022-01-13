@@ -105,10 +105,8 @@
                 // call this function when player is ready to use
                 'onReady': onPlayerReady,
                 'onStateChange': onPlayerStateChange
-
             }
         });
-        startInterval()
     }
     function onPlayerStateChange(event){
         if (event.data == YT.PlayerState.PAUSED) {
@@ -123,7 +121,7 @@
         //const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
         checkInt = setInterval(function() {
-            videoPos = !player.getCurrentTime() ? 0.0 : player.getCurrentTime();
+            videoPos = player.getCurrentTime();
             console.log(videoPos)
             if (Math.abs(media.currentTime() - videoPos)>= 0.5) {
                 media.currentTime(videoPos);
@@ -151,6 +149,8 @@
         stopButton.addEventListener("click", function() {
             player.stopVideo();
         });
+
+        startInterval();
 
     }
 
