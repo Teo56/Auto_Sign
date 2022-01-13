@@ -119,14 +119,18 @@
                 'onStateChange': onPlayerStateChange
             }
         });
+
+        startInterval();
     }
     function onPlayerStateChange(event){
+
+        console.log(event.data);
 
         if (event.data == YT.PlayerState.PAUSED) {
             media.pause();
             console.log("paused");
         }
-        else if (event.data == YT.PlayerState.PLAYED){
+        else {
             media.play();
             console.log("goes");
         }
@@ -143,32 +147,30 @@
 
                 //CheckT.innerHTML += player.getCurrentTime;
             };
-        }, 1000)
+        }, 100)
     }
     function onPlayerReady(event) {
         //var CheckT = document.getElementById("Check_time");
         console.log("YT VIDEO READY");
         event.target.playVideo();
         media.play();
-        ytplayer = document.getElementById("playerYT");
-        ytplayer.addEventListener("onStateChange", "onPlayerStateChange");
 
-        //CheckT.innerHTML += player.getCurrentTime();
+        CheckT.innerHTML += player.getCurrentTime();
         // bind events
-        // var playButton = document.getElementById("play-button");
-        // playButton.addEventListener("click", function() {
-        //     player.playVideo();
-        // });
-        //
-        // var pauseButton = document.getElementById("pause-button");
-        // pauseButton.addEventListener("click", function() {
-        //     player.pauseVideo();
-        // });
-        //
-        // var stopButton = document.getElementById("stop-button");
-        // stopButton.addEventListener("click", function() {
-        //     player.stopVideo();
-        // });
+        var playButton = document.getElementById("play-button");
+        playButton.addEventListener("click", function() {
+            player.playVideo();
+        });
+
+        var pauseButton = document.getElementById("pause-button");
+        pauseButton.addEventListener("click", function() {
+            player.pauseVideo();
+        });
+
+        var stopButton = document.getElementById("stop-button");
+        stopButton.addEventListener("click", function() {
+            player.stopVideo();
+        });
 
         startInterval();
 
