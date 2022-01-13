@@ -120,15 +120,15 @@
         var CheckT = document.getElementById("Check_time");
         //const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
-        checkInt = setInterval(function() {
-            videoPos = player.getCurrentTime();
+        setInterval(function() {
+            videoPos = player.getCurrentTime;
             console.log(videoPos)
             if (Math.abs(media.currentTime() - videoPos)>= 0.5) {
                 media.currentTime(videoPos);
 
                 //CheckT.innerHTML += player.getCurrentTime;
             };
-        }, 100)
+        }, 1000)
     }
     function onPlayerReady(event) {
         //var CheckT = document.getElementById("Check_time");
