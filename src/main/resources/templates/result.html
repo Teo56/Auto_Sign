@@ -139,7 +139,7 @@
         var CheckT = document.getElementById("Check_time");
         //const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
-        setInterval(function() {
+        checkInt = setInterval(function() {
             videoPos = player.getCurrentTime;
             console.log(videoPos)
             if (Math.abs(media.currentTime() - videoPos)>= 0.5) {
@@ -155,24 +155,21 @@
         event.target.playVideo();
         media.play();
 
-        CheckT.innerHTML += player.getCurrentTime();
         // bind events
-        var playButton = document.getElementById("play-button");
+        const playButton = document.getElementById("play-button");
         playButton.addEventListener("click", function() {
-            player.playVideo();
+            event.target.play();
         });
 
-        var pauseButton = document.getElementById("pause-button");
+        const pauseButton = document.getElementById("pause-button");
         pauseButton.addEventListener("click", function() {
-            player.pauseVideo();
+            event.target.pause();
         });
 
-        var stopButton = document.getElementById("stop-button");
+        const stopButton = document.getElementById("stop-button");
         stopButton.addEventListener("click", function() {
             player.stopVideo();
         });
-
-        startInterval();
 
     }
 
