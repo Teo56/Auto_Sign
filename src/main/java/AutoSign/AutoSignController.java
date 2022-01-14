@@ -93,7 +93,7 @@ public class AutoSignController {
         //String password = "Arius135";
 
         // TEST CONNECTION WITH DATABASE
-        try (Connection con = DriverManager.getConnection(url, user, password);
+        try (Connection con = DriverManager.getConnection(url);
              Statement st = con.createStatement();
              ResultSet rs = st.executeQuery("SELECT VERSION()")) {
 
