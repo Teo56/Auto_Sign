@@ -30,6 +30,7 @@ public class UrlSubmit {
         String user = "nmcnudamsuzpvx";
         //String user = "postgres";
         String password = "1a486086f1f7ece7c2c568408c62d36e23b78bbe38118c288e088f9be6042433";
+        String db_name = "d9p4pv538aoe9l";
 
         // TEST CONNECTION WITH DATABASE
         try (Connection con = DriverManager.getConnection(url, user, password);
@@ -96,7 +97,7 @@ public class UrlSubmit {
 
         // ----------------------
         // FILL IN THE TABLE
-        String query = "INSERT INTO videos(url, title, duration) VALUES(?, ?, ?)";
+        String query = "INSERT INTO d9p4pv538aoe9l(url, title, duration) VALUES(?, ?, ?)";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
