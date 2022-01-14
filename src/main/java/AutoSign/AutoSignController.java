@@ -158,7 +158,7 @@ public class AutoSignController {
 
         // ----------------------
         // FILL IN THE TABLE
-        String query = "INSERT INTO d9p4pv538aoe9l(url, title, duration) VALUES(?, ?, ?)";
+        String query = "INSERT INTO videos_history(url, title, duration) VALUES(?, ?, ?)";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
