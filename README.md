@@ -31,15 +31,8 @@ The files are structured in the following way:
 3. HomeViewTests (contains tests for the HomeView methods)
 
 
-
--app.py contains all the functions executed in Python
-
 -Pom.xml file contains all the plugins and dependencies needed for the program to run
 
 -Procfile and .travis.yml were used to deploy the project with Travis CI and Heroku
-
--test_unittest.py contains the tests for the app.py
-
--"remove list.txt" and "blank_image.png" are both static resources used inside the app.py
 
 For any question or doubts contact us directly at fc619@ic.ac.uk
