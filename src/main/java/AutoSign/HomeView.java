@@ -48,7 +48,6 @@ public class HomeView {
 
     public boolean checkVideoExists(String url) throws IOException {
         boolean exists = CheckVideoExist.CheckVideoExists(url);
-
         return exists;
     }
 
