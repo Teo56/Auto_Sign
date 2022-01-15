@@ -79,6 +79,18 @@ public class AutoSignController {
         return "result";
     }
 
+    @RequestMapping(value = "/homedark", method = RequestMethod.POST, params = "videourl")
+    public String startVideo(@RequestParam("url") String url, @ModelAttribute HomeView home, Model model) {
+
+        HomeView homeee = new HomeView();
+        homeee.setURL(url);
+        model.addAttribute("homeee", homeee);
+
+
+        System.out.print(homeee.getURL());
+        return "resultdark";
+    }
+    
 
     @PostMapping("/")
     public String URLsubmit(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
