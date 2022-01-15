@@ -80,7 +80,7 @@ public class AutoSignController {
     }
 
     @RequestMapping(value = "/homedark", method = RequestMethod.POST, params = "videourl")
-    public String startVideo(@RequestParam("url") String url, @ModelAttribute HomeView home, Model model) {
+    public String startVideoDark(@RequestParam("url") String url, @ModelAttribute HomeView home, Model model) {
 
         HomeView homeee = new HomeView();
         homeee.setURL(url);
@@ -196,7 +196,7 @@ public class AutoSignController {
 
 
     @PostMapping("/homedark")
-    public String URLsubmit(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
+    public String URLsubmitDark(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
         model.addAttribute("home", home);
         System.out.println(home.getURL());
         home.sendURL(home.getURL());
