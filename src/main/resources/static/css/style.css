@@ -375,8 +375,9 @@ span.price {
 
 
 #appearButtonDiv {
-    alignment: center;
-    left: 50%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 /* CSS */
 #appearButton {
@@ -393,7 +394,7 @@ span.price {
     line-height: 16px;
     min-height: 40px;
     outline: 0;
-    padding: 12px 14px;
+    padding: 20px 20px;
     text-align: center;
     text-rendering: geometricprecision;
     text-transform: none;
