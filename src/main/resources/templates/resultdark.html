@@ -13,6 +13,7 @@
 </head>
 <body>
 <h1 style="color: white">Your Video is Ready To Watch!</h1>
+
 <!--<p style="color: white" th:text="'URL: ' + ${home.getEmbed()}" />-->
 <p><br><br></p>
 <div class="wrapper">
@@ -20,15 +21,19 @@
     <div class="content">
         <div class="title">BSL Subtitles</div>
         <div class="player">
-            <video  width="213" height="160" controls>
-                <source th:src="@{/images/watch.mp4}" type=video/mp4>
+
+            <video id="my-video"
+                   class="video-js"
+                   controls data-setup="{}" width="213" height="160">
+                <source id="videodownloaded" src="" type="video/mp4">
             </video>
+
         </div>
     </div>
 </div>
 
-<div>
-    <iframe class="center" width="840" height="472" id="video" th:src="@{${home.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>
+<div id="playerYT" class="center">
+<!--    <iframe  width="840" height="472" id="playerYT" th:src="@{${homeee.getEmbed()}}"  frameborder="0" allowfullscreen></iframe>-->
 </div>
 
 <script>
@@ -66,77 +71,114 @@
         <div  id="pause-button"></div>
     </button>
 </div>
-<script>
-    var player;
-    const media = document.querySelector('video');
+
+<script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+<script th:filename="${homeee.VideoFileName()}" th:url="${homeee.getURL()}">
+    var filename = document.currentScript.getAttribute('filename');
+    var url = document.currentScript.getAttribute('url');
+    var videoidarr = url.split("v=");
+    var videoid = videoidarr[1];
+    document.getElementById('videodownloaded').src = "https://storage.googleapis.com/auto-sign-main//tmp/" +  filename;
+    var videoPos;
+    //const media = document.querySelector('#my-video');
+    var media = videojs("my-video");
     const play = document.querySelector('#play-button');
     const pause = document.querySelector('#pause-button');
 
     play.addEventListener('click', playMedia);
     pause.addEventListener('click', pauseMedia);
 
+    // Inject YouTube API script
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
     function playMedia() {
-        if(media.paused) {
+        if(media.paused()) {
             media.play();
         }
     }
 
     function pauseMedia() {
-        if(media.paused != true) {
+        if(!media.paused()) {
             media.pause();
         }
     }
-
-    // this function gets called when API is ready to use
-    function onYouTubePlayerAPIReady() {
+    var player;
+    function onYouTubeIframeAPIReady() {
         // create the global player from the specific iframe (#video)
-        player = new YT.Player('video', {
+        console.log("works");
+        player = new YT.Player('playerYT', {
+            width: "840",
+            height: "472",
+            videoId: videoid,
             events: {
                 // call this function when player is ready to use
-                'onReady': onPlayerReady
-
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
             }
         });
-        startInterval()
+
+        startInterval();
+    }
+    function onPlayerStateChange(event){
+
+        console.log(event.data);
+
+        if (event.data == YT.PlayerState.PAUSED) {
+            media.pause();
+            console.log("paused");
+        }
+        else {
+            media.play();
+            console.log("goes");
+        }
     }
     function startInterval() {
         var CheckT = document.getElementById("Check_time");
-        const media = document.querySelector('video');
+        //const media = document.querySelector('video');
         //checks every 100ms to see if the video has reached 6s
         checkInt = setInterval(function() {
-            if (Math.abs(media.currentTime - player.getCurrentTime())>= 0.5) {
-                media.currentTime = player.getCurrentTime();
-                //CheckT.innerHTML += player.getCurrentTime();
+            videoPos = player.getCurrentTime();
+            console.log(videoPos)
+            if (Math.abs(media.currentTime() - videoPos)>= 0.5) {
+                console.log(videoPos);
+                console.log(Math.abs(media.currentTime() - videoPos));
+                media.currentTime(videoPos);
+
+                //CheckT.innerHTML += player.getCurrentTime;
             };
         }, 100)
     }
     function onPlayerReady(event) {
         //var CheckT = document.getElementById("Check_time");
+        console.log("YT VIDEO READY");
+        event.target.playVideo();
+        media.play();
 
-        //CheckT.innerHTML += player.getCurrentTime();
         // bind events
-        var playButton = document.getElementById("play-button");
+        const playButton = document.getElementById("play-button");
         playButton.addEventListener("click", function() {
-            player.playVideo();
+            if (event.data == YT.PlayerState.PAUSED) {
+                player.playVideo();
+            }
         });
 
-        var pauseButton = document.getElementById("pause-button");
+        const pauseButton = document.getElementById("pause-button");
         pauseButton.addEventListener("click", function() {
-            player.pauseVideo();
+            if (event.data != YT.PlayerState.PAUSED) {
+                player.pauseVideo();
+            }
         });
 
-        var stopButton = document.getElementById("stop-button");
+        const stopButton = document.getElementById("stop-button");
         stopButton.addEventListener("click", function() {
             player.stopVideo();
         });
 
     }
 
-    // Inject YouTube API script
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 </script>
 <script>
     const box = document.querySelector('.box');
