@@ -33,7 +33,9 @@ import AutoSign.functions.StartVideo;
 import AutoSign.functions.UrlSubmit;
 
 // This controller class contains all the mapping of the java app
-// Different get and post mapping requests are sent in order to retrieve and later display the dofferent html pages
+// Different get and post mapping requests are sent in order to retrieve and later display the dffferent html pages
+// Some of its methods have been implemented as static methods in separate classes in order to make the AutoSignController class cleaner
+// These classes have been packaged into the folder "functions"
 @Controller
 public class AutoSignController {
     
