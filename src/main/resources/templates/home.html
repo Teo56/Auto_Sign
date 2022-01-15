@@ -32,7 +32,7 @@
 </div>
 
 <form action="#" th:action="@{/}" th:object="${home}" method="post">
-    <p style="color:white; text-align: center"><br></br><br></br><br></br>URL: <input type="url" placeholder="Enter youtube URL" th:field="*{URL}" pattern="https?://www.youtube.+"/></p>
+    <p style="color:white; text-align: center"><br></br><br></br><br></br>URL: <input type="url" placeholder="Enter youtube URL" required = "required" th:field="*{URL}" pattern="https?://www.youtube.+"/></p>
     <p style="color:white; text-align: center">(For example: https://www.youtube.com)</p>
     <p style="text-align: center;"><br><input type="submit" value="Submit" /> <input type="reset" value="Reset"  /></p>
 </form>
