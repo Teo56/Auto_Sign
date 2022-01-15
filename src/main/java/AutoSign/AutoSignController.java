@@ -29,10 +29,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import AutoSign.functions.CheckVideoExist;
-import AutoSign.functions.DownloadObject;
-import AutoSign.functions.PrintDbUrl;
-import AutoSign.functions.SendUrl;
+import AutoSign.functions.StartVideo;
+import AutoSign.functions.UrlSubmit;
+import AutoSign.functions.CheckVideoRouter;
 
 
 
