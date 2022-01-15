@@ -184,12 +184,12 @@ public class AutoSignController {
 
 
     @PostMapping("/homedark")
-    public String URLsubmitdark(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
-
+    public String URLsubmit(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
         model.addAttribute("home", home);
         System.out.println(home.getURL());
         home.sendURL(home.getURL());
-        String url ="postgresql://nmcnudamsuzpvx:1a486086f1f7ece7c2c568408c62d36e23b78bbe38118c288e088f9be6042433@ec2-54-170-212-187.eu-west-1.compute.amazonaws.com:5432/d9p4pv538aoe9l";
+        String url = "jdbc:postgresql://" + "ec2-54-170-212-187.eu-west-1.compute.amazonaws.com"+ ':' + "5432/" + "d9p4pv538aoe9l" + "?sslmode=require";
+        //String url ="postgresql://nmcnudamsuzpvx:1a486086f1f7ece7c2c568408c62d36e23b78bbe38118c288e088f9be6042433@ec2-54-170-212-187.eu-west-1.compute.amazonaws.com:5432/d9p4pv538aoe9l";
         //String url = "jdbc:postgresql://localhost:5432/postgres";
         String user = "nmcnudamsuzpvx";
         //String user = "postgres";
@@ -261,7 +261,7 @@ public class AutoSignController {
 
         // ----------------------
         // FILL IN THE TABLE
-        String query = "INSERT INTO d9p4pv538aoe9l(url, title, duration) VALUES(?, ?, ?)";
+        String query = "INSERT INTO videos_history(url, title, duration) VALUES(?, ?, ?)";
 
         try (Connection con = DriverManager.getConnection(url, user, password);
              PreparedStatement pst = con.prepareStatement(query)) {
@@ -282,7 +282,7 @@ public class AutoSignController {
 
 
 
-        return "resultdark";
+        return "loading";
     }
 
     @GetMapping("/history")
