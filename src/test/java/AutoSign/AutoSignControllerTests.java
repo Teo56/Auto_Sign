@@ -18,11 +18,10 @@ public class AutoSignControllerTests {
 
     @Autowired
     private MockMvc mockmvc; // Creates a mock client to submit the requests
-
-
+    
     @Test
-    void HomeTest() throws Exception {
-        mockmvc.perform(get("/"))
+    void HomeDarkTest() throws Exception {
+        mockmvc.perform(get("/homedark"))
                 .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
                 .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
                 .andReturn(); // Defines return value
@@ -35,10 +34,26 @@ public class AutoSignControllerTests {
                 .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
                 .andReturn(); // Defines return value
     }
+    
+    @Test
+    void ContactUsDarkTest() throws Exception {
+        mockmvc.perform(get("/contactusdark"))
+                .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
+                .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
+                .andReturn(); // Defines return value
+    }
 
     @Test
     void HistoryTest() throws Exception {
         mockmvc.perform(get("/history"))
+                .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
+                .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
+                .andReturn(); // Defines return value
+    }
+    
+    @Test
+    void HistoryDarkTest() throws Exception {
+        mockmvc.perform(get("/historydark"))
                 .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
                 .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
                 .andReturn(); // Defines return value
@@ -51,10 +66,26 @@ public class AutoSignControllerTests {
                 .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
                 .andReturn(); // Defines return value
     }
+    
+    @Test
+    void AboutUsDarkTest() throws Exception {
+        mockmvc.perform(get("/aboutusdark"))
+                .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
+                .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
+                .andReturn(); // Defines return value
+    }
 
     @Test
     void DonateTest() throws Exception {
         mockmvc.perform(get("/donate"))
+                .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
+                .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
+                .andReturn(); // Defines return value
+    }
+    
+    @Test
+    void DonateDarkTest() throws Exception {
+        mockmvc.perform(get("/donatedark"))
                 .andExpect(status().isOk()) // Checks that the status code of the sesponse is 200 (=OK -> request properly sent)
                 .andExpect(content().contentType(MediaType.valueOf("text/html;charset=UTF-8"))) // Checks that the content associated to that requests is of type html
                 .andReturn(); // Defines return value
