@@ -9,6 +9,8 @@ import org.json.JSONException;
 import java.io.IOException;
 
 // The HomeView class is used as a holder for the url submitted by the user, as well as important functions to retrieve it and perform operations of the youtube and translation videos
+// Some of its methods have been implemented as static methods in separate classes in order to make the HomeView oage cleaner
+// These classes have been packaged into the folder "functions"
 public class HomeView {
 
     private String url;
