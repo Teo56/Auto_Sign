@@ -31,9 +31,6 @@ import java.util.logging.Logger;
 
 import AutoSign.functions.StartVideo;
 import AutoSign.functions.UrlSubmit;
-import AutoSign.functions.CheckVideoRouter;
-
-
 
 
 @Controller
@@ -54,9 +51,8 @@ public class AutoSignController {
     
     @PostMapping("/checkvideoexists")
     @ResponseBody
-    public void checkVideoRouter(@RequestParam("videoid") String videoid, @ModelAttribute HomeView home, Model model) throws IOException {
-        CheckVideoRouter.checkVideoRouter(videoid, home, model);
-        /*model.addAttribute("home", home);
+    public Boolean checkVideoRouter(@RequestParam("videoid") String videoid, @ModelAttribute HomeView home, Model model) throws IOException {
+        model.addAttribute("home", home);
         Boolean exist;
         String[] videoID = videoid.split("v=");
         String videoId = videoID[1];
@@ -68,7 +64,7 @@ public class AutoSignController {
         } else if (exist == false) {
             return false;
         }
-        return false;*/
+        return false;
     }
 
 
