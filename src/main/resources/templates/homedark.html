@@ -3,7 +3,6 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-
 <head>
     <meta charset="UTF-8">
     <title>AutoSign</title>
@@ -24,13 +23,12 @@
         <li><a th:href="@{/}"><i class="fa fa-home" aria-hidden="true"></i> Light Mode</a></li>
     </ul>
 </nav>
+      
 <div class="HomeMsg">
     <p><br></p>
     <h1> SignTube</h1> <img width="63.25" height="60"th:src="@{/images/AutoSignLogo3.png}" alt="Logo" class="center">
     <h2> Get your Youtube videos SignTubed! </h2>
 </div>
-
-
 
 <form action="#" th:action="@{/homedark}" th:object="${home}" method="post">
     <p style="color:white; text-align: center"><br></br><br></br><br></br>URL: <input type="url" th:field="*{URL}" /></p>
