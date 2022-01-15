@@ -14,12 +14,11 @@ The files are structured in the following way:
 -src/main/Java/Auto_Sign/functions us a package containing classes with static methods. These were created in order to make the other main classes more ordered and easy to understand. The static methods contained in these classes are: 
 
 1. CheckVideoExist (checks video is present in cloud storage) 
-2. CheckVideoRouter (Launches Check video exists)
-3. PrintDbUrl (creates string to display database in html)
-4. URLSubmit (Inserts elements in database)
-5. SendURL (post request to python server with url)
-6. StartVideo (Creates new HomeView object and goes to result page to watch the video)
-7. DownloadObject (Downloads translation video and streams it together with youtube one)
+2. PrintDbUrl (creates string to display database in html)
+3. URLSubmit (Inserts elements in database)
+4. SendURL (post request to python server with url)
+5. StartVideo (Creates new HomeView object and goes to result page to watch the video)
+6. DownloadObject (Downloads translation video and streams it together with youtube one)
 
 -src/main/Resources/static contains static elements used in the program such ass css files, images, buttons and fonts
 
