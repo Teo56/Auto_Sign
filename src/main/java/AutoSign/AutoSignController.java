@@ -32,42 +32,55 @@ import java.util.logging.Logger;
 import AutoSign.functions.StartVideo;
 import AutoSign.functions.UrlSubmit;
 
-
+// This controller class contains all the mapping of the java app
+// Different get and post mapping requests are sent in order to retrieve and later display the dofferent html pages
 @Controller
 public class AutoSignController {
-    /**GetMapping associates the URL / to the method home()**/
+    
+    // Get mapping to homepage
     @GetMapping("/" )
     public String Home(Model model){
+        // New HomeView object created to store the information regarding url submission by the user
         model.addAttribute("home", new HomeView());
-        /** returning the logical name of the html to be viewed, here home.html**/
         return "home";
     }
 
+    // Get mapping to homepage (dark mode)
     @GetMapping("/homedark" )
     public String HomeDark(Model model){
         model.addAttribute("home", new HomeView());
         return "homedark";
     }
     
+    // Post mapping to "check video exists"
+    // When this post requests is sent, the checkVideoRounter method is called
     @PostMapping("/checkvideoexists")
     @ResponseBody
     public Boolean checkVideoRouter(@RequestParam("videoid") String videoid, @ModelAttribute HomeView home, Model model) throws IOException {
+        
+        // This method takes the created HomeView object as input and, by calling its checkVideoExist method, repetitively checks for the translation video on google cloud storage
+        // This is done by using the videoID of the video that the user wants to translate (videoID is used in the name of the saved video file)
+        
         model.addAttribute("home", home);
         Boolean exist;
         String[] videoID = videoid.split("v=");
         String videoId = videoID[1];
 
+        // When the video gets saved on google cloud storage by python, the method checkVideoExists will return TRUE
         exist = home.checkVideoExists(videoId);
         if (exist) {
+            // When checkVideoExists returns true, the downloadVideo method of HomeView is called in order to stream it from google cloud storage in the draggable window
             home.downloadVideo(videoId);
             return true;
         } else if (exist == false) {
+            // If the video is not found in google cloud storage the method returns FALSE
             return false;
         }
         return false;
     }
 
 
+    // The following method is used to exit the loading page (during the translation time) and be redirected to the result page, where the youtube and translation videos are displayed
     @RequestMapping(value = "/", method = RequestMethod.POST, params = "videourl")
     public String startVideo(@RequestParam("url") String url, @ModelAttribute HomeView home, Model model) {
         StartVideo.startVideo(url, home, model);
@@ -79,6 +92,7 @@ public class AutoSignController {
         return "result";
     }
 
+    // Result page (dark)
     @RequestMapping(value = "/homedark", method = RequestMethod.POST, params = "videourl")
     public String startVideoDark(@RequestParam("url") String url, @ModelAttribute HomeView home, Model model) {
         StartVideo.startVideo(url, home, model);
@@ -90,8 +104,13 @@ public class AutoSignController {
     }
     
 
+    // When a post request is made to "/", the loading page is returned
+    // The loading oage is held as long as the python algorithm processes the youtube video and creates its translation
     @PostMapping("/")
     public String URLsubmit(@ModelAttribute HomeView home, Model model) throws IOException, JSONException {
+        
+        // The urlsubmit method is used to insert the youtube-video url, duration and title into the database
+        // The database entries can be seen in the history page
         UrlSubmit.urlsubmit(home, model);
         return "loading";
     }
@@ -103,6 +122,9 @@ public class AutoSignController {
         return "loading";
     }
 
+    // Mapping to the history page, where the database entries are displayed (youtube-video url, title and duration)
+    // The database contains all past searches, and therefore all the previously translated videos
+    // This measn that, being the the translations already on google cloud storage, no processing of those videos will be required at their next submission
     @GetMapping("/history")
     public String History(Model model){
         model.addAttribute("home", new HomeView());
@@ -117,21 +139,27 @@ public class AutoSignController {
         return "historydark";
     }
 
+    // Mapping to contact us page, where where a contact form is available for the user to submit feedback and help us improve the app
     @GetMapping("/contactus")
     public String ContactUs(){
         return "contactus.html";
     }
+    
+    
 
+    // Mapping to contact us page where team members are listed, as well as general information about the project
     @GetMapping("/aboutus")
     public String AboutUs(){
         return "aboutus";
     }
 
+    // mapping to donate page for generous donations
     @GetMapping("/donate")
     public String Donate(){
         return "donate";
     }
 
+   
     @GetMapping("/contactusdark")
     public String ContactUsDark(){
         return "contactusdark.html";
